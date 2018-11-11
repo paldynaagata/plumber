@@ -102,3 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+/Plumber/.vs/Plumber/v15
+/.gitattributes
+/Plumber/Plumber.sln
+/Plumber/Plumber.pyproj

@@ -6,27 +6,9 @@ Author: Agata Paldyna
 
 import pygame
 
+from Board import Board
 from Pipe import Pipe
-from Direction import Direction
-from Side import Side
 
-
-def get_coordinates_shifted_by_side(x, y, side):
-    if side == Side.Left:
-        return x - 1, y
-    elif side == Side.Up:
-        return x, y + 1
-    elif side == Side.Right:
-        return x + 1, y
-    elif side == Side.Down:
-        return x, y - 1
-    
-def connected_pipes_generator(table, pipe):
-    for output in pipe.outputs:
-        x, y = get_coordinates_shifted_by_side(pipe.x, pipe.y, output.side)
-        if x in range(len(table)) and y in range(len(table[0])):
-            yield table[x][y]
-            
             
 #outputs1 = [Direction(Side.Left), Direction(Side.Right)]
 #pipe1 = Pipe(outputs1, 1, 3)
@@ -39,27 +21,36 @@ def connected_pipes_generator(table, pipe):
 #dir1 = Direction(Side.Up)
 #print(dir1.get_opposite().side.name)
 
-table = [[0 for x in range(3)] for y in range(3)]
-for i in range(3):
-    for j in range(3):
+x = 3
+y = 3
+pipes = list()
+
+#for i in range(x):
+#    for j in range(y):
+#        if  j == 1 and (i == 0 or i == 2):
+#            table[i][j] = pipe.get_nodus(i, j)
+#        else:
+#            table[i][j] = pipe.get_streight(i, j)
+
+for i in range(x):
+    for j in range(y):
         if  i == 1 and (j == 0 or j == 2):
-            table[i][j] = Pipe.get_nodus(i, j)
+            pipes.append(Pipe.get_nodus(i, j))
         else:
-            table[i][j] = Pipe.get_streight(i,j)
+            pipes.append(Pipe.get_streight(i, j))
             
-table[1][1].rotate()
-table[1][0].rotate()
-table[1][0].rotate()
+board = Board(x, y, pipes)
 
-start_pipe = table[2][0]
-end_pipe = table[0][2]
+board.table[1][1].rotate()
 
-checked_pipes = set((start_pipe))
-current_pipe = start_pipe
-for pipe in  connected_pipes_generator(table, current_pipe):
-    if pipe not in checked_pipes and current_pipe in connected_pipes_generator(table, pipe):
-        
+board.table[1][0].rotate()
+board.table[1][0].rotate()
+board.table[1][0].rotate()
 
+board.table[1][2].rotate()
+
+zmienna = board.exists_connection_between_start_and_end_pipes()
+print(zmienna)
 
 
 #pygame.init()
