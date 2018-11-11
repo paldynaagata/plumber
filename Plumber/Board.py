@@ -8,12 +8,20 @@ class Board:
     def __init__(self, x_, y_, pipes_):
         """
         Constructor
+
+        init(int, int, list)
+
+        x_ - width of the board
+        y_ - hight of the board
+        pipes_ - list of pipes (type Pipe or GamePipe)
         """
         self.x = x_
         self.y = y_
         self.pipes = pipes_.copy()
         self.start_pipe = pipes_[0]
+        self.start_pipe.block_rotate = True
         self.end_pipe = pipes_[-1]
+        self.end_pipe.block_rotate = True
         self.table = [[0 for x in range(self.x)] for y in range(self.y)]
 
         for pipe in pipes_:
