@@ -16,8 +16,6 @@ class GameScreen(Screen):
         self.success = False
         self.board = None
         self.scale = 100
-        self.left_mouse_button_clicked = False
-        self.right_mouse_button_clicked = False
 
         x = 3
         y = 3
@@ -35,24 +33,13 @@ class GameScreen(Screen):
 
         for pipe in self.pipes:
             pipe.image = pygame.transform.scale(pipe.image, (self.scale, self.scale))
-    
 
-    def set_mouse_clicked_buttons(self):
-        m1, m2, m3 = pygame.mouse.get_pressed()
-        self.left_mouse_button_clicked = m1 == 1
-        self.right_mouse_button_clicked = m3 == 1
 
-    def show(self, window, events):
-        for event in events:
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                self.set_mouse_clicked_buttons()
-
-            elif event.type == pygame.MOUSEBUTTONUP:
-                if self.left_mouse_button_clicked or self.right_mouse_button_clicked:
-                    if self.left_mouse_button_clicked:
-                        clockwise = True
-                    elif self.right_mouse_button_clicked:
-                        clockwise = False
+    def show(self, game):
+        for event in game.events:
+            if event.type == pygame.MOUSEBUTTONUP:
+                if game.left_mouse_button_clicked or game.right_mouse_button_clicked:
+                    clockwise = game.left_mouse_button_clicked
 
                     mouse_x, mouse_y = pygame.mouse.get_pos()
                     pipe_x = mouse_x // self.scale
@@ -62,15 +49,14 @@ class GameScreen(Screen):
                         self.board.table[pipe_x][pipe_y].rotate(clockwise)
                         self.success = self.board.exists_connection_between_start_and_end_pipes()
 
-                    self.left_mouse_button_clicked = False
-                    self.right_mouse_button_clicked = False
+        pygame.draw.rect(game.window, (0, 0, 0), (0, 0, self.board.x * self.scale, self.board.y * self.scale))
 
         for pipe in self.pipes:
-            window.blit(pipe.image, (self.scale * pipe.x, self.scale * pipe.y))
+            game.window.blit(pipe.image, (self.scale * pipe.x, self.scale * pipe.y))
 
         if self.success:
             myfont = pygame.font.SysFont('Comic Sans MS', 30)
             textsurface = myfont.render('Brawo!', False, (255, 255, 255))
-            window.blit(textsurface, (window.get_width()/2, window.get_height()/2))
+            game.window.blit(textsurface, (game.window.get_width() / 2, game.window.get_height() / 2))
 
-        return super().show(window, events)
+        return super().show(game)

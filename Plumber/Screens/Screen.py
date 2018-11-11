@@ -6,5 +6,5 @@ class Screen(ABC):
     """
 
     @abstractmethod
-    def show(self, window, events):
+    def show(self, game):
         return self

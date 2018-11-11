@@ -6,6 +6,6 @@ class ScoresScreen(Screen):
     inherited class Screen
     """
     
-    def show(self, window, events):
+    def show(self, game):
 
-        return super().show(window, events)
+        return super().show(game)
