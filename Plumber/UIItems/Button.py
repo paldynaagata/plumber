@@ -1,5 +1,5 @@
 import pygame
-import Constants
+import Sounds
 
 from pygame import Rect
 from UIItems.CenteredText import CenteredText
@@ -10,10 +10,15 @@ class Button:
     """
 
     def __init__(self, text):
-        self.text = CenteredText(text, 20, (0, 0, 0))
+        self.text = None
         self.size = (150, 50)
         self.click_method = None
         self.rect = None
+        self.set_text(text)
+
+
+    def set_text(self, text):
+        self.text = CenteredText(text, 20, (0, 0, 0))
 
 
     def set_click(self, method):
@@ -21,8 +26,7 @@ class Button:
 
 
     def on_click(self):
-        click_effect = pygame.mixer.Sound(Constants.menu_click_sound)
-        click_effect.play()
+        Sounds.play_button_click()
         return None if self.click_method is None else self.click_method()
 
 

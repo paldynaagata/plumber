@@ -1,4 +1,5 @@
 import pygame
+import Localization
 
 from Screens.MenuScreen import MenuScreen
 from Screens.ScoresScreen import ScoresScreen
@@ -11,22 +12,24 @@ class MainMenuScreen(MenuScreen):
     """
 
     def __init__(self):
-        new_game_button = Button("New Game")
+        new_game_button = Button(Localization.get_text('new_game'))
         new_game_button.set_click(lambda: NewGameMenuScreen())
 
-        scores_button = Button("Scores")
+        scores_button = Button(Localization.get_text('scores'))
         scores_button.set_click(lambda: ScoresScreen())
 
-        settings_button = Button("Settings")
-        #settings_button.set_click(lambda: SettingsScreen())
+        settings_button = Button(Localization.get_text('settings'))
+        settings_button.set_click(lambda: SettingsScreen())
 
-        exit_button = Button("Exit")
+        exit_button = Button(Localization.get_text('exit'))
         exit_button.set_click(lambda: None)
 
         buttons = (new_game_button, scores_button, settings_button, exit_button)
 
         super().__init__(buttons, "Plumber", 110)
 
+
+from Screens.SettingsScreen import SettingsScreen
 from Screens.NewGameMenuScreen import NewGameMenuScreen
 from Screens.GameScreen import GameScreen
 # it is here because modules import each other

@@ -1,5 +1,5 @@
 import pygame
-import Constants
+import Sounds
 
 from Board import Board
 from PipeFactory import PipeFactory
@@ -55,9 +55,7 @@ class GameScreen(Screen):
                 if game.left_mouse_button_clicked or game.right_mouse_button_clicked:
                     clockwise = game.left_mouse_button_clicked
                     self.click_count += 1
-                    sound = Constants.get_random_click_sound()
-                    click_effect = pygame.mixer.Sound(sound)
-                    click_effect.play()
+                    Sounds.play_pipe_rotate()
 
                     mouse_x, mouse_y = pygame.mouse.get_pos()
                     pipe_x = (mouse_x - board_x) // self.scale 
@@ -75,8 +73,7 @@ class GameScreen(Screen):
 
         if self.success:
             #pygame.time.delay(2000)
-            win_effect = pygame.mixer.Sound(Constants.win_sound)
-            win_effect.play()
+            Sounds.play_winning()
             #return GameSummaryScreen(self.click_count, self.time)
             return GameSummaryScreen(self.click_count)
 

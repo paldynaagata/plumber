@@ -1,4 +1,5 @@
 import pygame
+import Localization
 
 from Screens.MenuScreen import MenuScreen
 from Screens.GameScreen import GameScreen
@@ -20,12 +21,12 @@ class NewGameMenuScreen(MenuScreen):
         board_5x5 = Button("5 x 5")
         board_5x5.set_click(lambda: GameScreen())
 
-        back_button = Button("Back")
+        back_button = Button(Localization.get_text('back'))
         back_button.set_click(lambda: MainMenuScreen())
 
         buttons = (board_3x3, board_4x4, board_5x5, back_button)
 
-        super().__init__(buttons, "Choose size of the board", 60)
+        super().__init__(buttons, Localization.get_text('choose_size'), 60)
 
 from Screens.MainMenuScreen import MainMenuScreen
 # it is here because modules import each other
