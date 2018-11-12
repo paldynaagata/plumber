@@ -12,17 +12,18 @@ class GameScreen(Screen):
     inherited class Screen
     """
 
-    def __init__(self, pipes_file_path):
+    def __init__(self, board_name):
         self.pipes = list()
         self.success = False
         self.board = None
         self.scale = 100
         self.click_count = 0
+        pipes_file_path = f"Boards/{board_name}.txt"
         
         pipes_importer = PipesImporter('GamePipe.GamePipe')
         self.pipes = pipes_importer.get_pipes_from_file(pipes_file_path)
-        size = int(math.sqrt(len(self.pipes)))
-        self.board = Board(size, size, self.pipes)
+        self.size = int(math.sqrt(len(self.pipes)))
+        self.board = Board(self.size, self.size, self.pipes)
 
         for pipe in self.pipes:
             pipe.image = pygame.transform.scale(pipe.image, (self.scale, self.scale))
@@ -64,8 +65,9 @@ class GameScreen(Screen):
 
         if self.success:
             Sounds.play_winning()
-            return GameSummaryScreen(self.click_count)
+            return GameSummaryScreen(self.click_count, self.size)
 
         return super().show(game)
+
 
 from Screens.GameSumaryScreen import GameSummaryScreen

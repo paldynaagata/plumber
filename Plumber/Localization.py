@@ -1,5 +1,6 @@
 import csv 
 import Settings
+import Constants
 
 from Singleton import Singleton
 
@@ -18,8 +19,8 @@ class __Localization(metaclass = Singleton):
 
 
     def _load_localization(self):
-        with open('localization.csv', mode = 'r', encoding = 'utf-8') as csvfile:
-            reader = csv.DictReader(csvfile)
+        with open('localization.csv', mode = 'r', encoding = Constants.encoding) as file:
+            reader = csv.DictReader(file)
             langs = list(reader.fieldnames)[1:]
             self._dictionaries = dict((lang, dict()) for lang in langs)
             for row in reader:

@@ -11,7 +11,7 @@ class Button:
 
     def __init__(self, text):
         self.text = None
-        self.size = (150, 50)
+        self.size = (170, 50)
         self.click_method = None
         self.rect = None
         self.set_text(text)

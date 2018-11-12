@@ -2,7 +2,6 @@ import pygame
 import Localization
 
 from Screens.MenuScreen import MenuScreen
-from Screens.ScoresScreen import ScoresScreen
 from UIItems.Button import Button
 
 class MainMenuScreen(MenuScreen):
@@ -13,10 +12,10 @@ class MainMenuScreen(MenuScreen):
 
     def __init__(self):
         new_game_button = Button(Localization.get_text('new_game'))
-        new_game_button.set_click(lambda: NewGameMenuScreen())
+        new_game_button.set_click(lambda: GameTypePickerScreen('choose_size', lambda x: GameScreen(x)))
 
-        scores_button = Button(Localization.get_text('scores'))
-        scores_button.set_click(lambda: ScoresScreen())
+        scores_button = Button(Localization.get_text('best_scores'))
+        scores_button.set_click(lambda: GameTypePickerScreen('best_scores', lambda x: ScoresScreen(x)))
 
         settings_button = Button(Localization.get_text('settings'))
         settings_button.set_click(lambda: SettingsScreen())
@@ -29,7 +28,8 @@ class MainMenuScreen(MenuScreen):
         super().__init__(buttons, "Plumber", 110)
 
 
+from Screens.ScoresScreen import ScoresScreen
 from Screens.SettingsScreen import SettingsScreen
-from Screens.NewGameMenuScreen import NewGameMenuScreen
+from Screens.GameTypePickerScreen import GameTypePickerScreen
 from Screens.GameScreen import GameScreen
 # it is here because modules import each other

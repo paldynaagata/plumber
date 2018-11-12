@@ -12,5 +12,6 @@ from Game import Game
 #width = board.x * scale
 #height = board.y * scale
 
+
 game = Game()
 game.play_loop()

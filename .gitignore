@@ -106,3 +106,5 @@ venv.bak/
 /.gitattributes
 /Plumber/Plumber.sln
 /Plumber/Plumber.pyproj
+/Plumber/.vs/slnx.sqlite
+/Plumber/.vs/VSWorkspaceState.json
