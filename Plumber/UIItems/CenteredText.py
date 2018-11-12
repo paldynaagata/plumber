@@ -1,4 +1,5 @@
 import pygame
+import Constants
 
 class CenteredText(object):
     """
@@ -9,7 +10,7 @@ class CenteredText(object):
         self.text = text_
         self.size = size_
         self.color = color_
-        myfont = pygame.font.SysFont('Comic Sans MS', self.size)
+        myfont = pygame.font.SysFont(Constants.font, self.size)
         self.text_surface = myfont.render(self.text, False, self.color)
 
 

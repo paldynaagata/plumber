@@ -1,4 +1,5 @@
 import pygame
+import Constants
 
 from pygame import Rect
 from UIItems.CenteredText import CenteredText
@@ -20,6 +21,8 @@ class Button:
 
 
     def on_click(self):
+        click_effect = pygame.mixer.Sound(Constants.menu_click_sound)
+        click_effect.play()
         return None if self.click_method is None else self.click_method()
 
 

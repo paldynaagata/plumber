@@ -1,4 +1,5 @@
 import pygame
+import Constants
 
 from Board import Board
 from PipeFactory import PipeFactory
@@ -51,13 +52,12 @@ class GameScreen(Screen):
         
         for event in game.events:
             if event.type == pygame.MOUSEBUTTONUP:
-                #if self.success:
-                #    #return GameSummaryScreen(self.click_count, self.time)
-                #    return GameSummaryScreen()
-                #else:
                 if game.left_mouse_button_clicked or game.right_mouse_button_clicked:
                     clockwise = game.left_mouse_button_clicked
                     self.click_count += 1
+                    sound = Constants.get_random_click_sound()
+                    click_effect = pygame.mixer.Sound(sound)
+                    click_effect.play()
 
                     mouse_x, mouse_y = pygame.mouse.get_pos()
                     pipe_x = (mouse_x - board_x) // self.scale 
@@ -74,10 +74,9 @@ class GameScreen(Screen):
             game.window.blit(pipe.image, (board_x + self.scale * pipe.x, board_y + self.scale * pipe.y))
 
         if self.success:
-            #myfont = pygame.font.SysFont('Comic Sans MS', 30)
-            #textsurface = myfont.render('Brawo!', False, (255, 255, 255))
-            #game.window.blit(textsurface, (game.window.get_width() / 2, game.window.get_height() / 2))
             #pygame.time.delay(2000)
+            win_effect = pygame.mixer.Sound(Constants.win_sound)
+            win_effect.play()
             #return GameSummaryScreen(self.click_count, self.time)
             return GameSummaryScreen(self.click_count)
 
