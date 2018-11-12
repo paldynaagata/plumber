@@ -1,10 +1,10 @@
 import pygame
+import math
 import Sounds
 
 from Board import Board
-from PipeFactory import PipeFactory
 from Screens.Screen import Screen
-from Side import Side
+from PipesImporter import PipesImporter
 
 class GameScreen(Screen):
     """
@@ -12,26 +12,17 @@ class GameScreen(Screen):
     inherited class Screen
     """
 
-    def __init__(self):
+    def __init__(self, pipes_file_path):
         self.pipes = list()
         self.success = False
         self.board = None
         self.scale = 100
         self.click_count = 0
-
-        x = 3
-        y = 3
-
-        pipe_factory = PipeFactory('GamePipe.GamePipe')
-
-        for i in range(x):
-            for j in range(y):
-                if  i == 1 and (j == 0 or j == 2):
-                    self.pipes.append(pipe_factory.get_pipe((Side.Left, Side.Up), i, j))
-                else:
-                    self.pipes.append(pipe_factory.get_pipe((Side.Left, Side.Right), i, j))
-            
-        self.board = Board(x, y, self.pipes)
+        
+        pipes_importer = PipesImporter('GamePipe.GamePipe')
+        self.pipes = pipes_importer.get_pipes_from_file(pipes_file_path)
+        size = int(math.sqrt(len(self.pipes)))
+        self.board = Board(size, size, self.pipes)
 
         for pipe in self.pipes:
             pipe.image = pygame.transform.scale(pipe.image, (self.scale, self.scale))
@@ -72,9 +63,7 @@ class GameScreen(Screen):
             game.window.blit(pipe.image, (board_x + self.scale * pipe.x, board_y + self.scale * pipe.y))
 
         if self.success:
-            #pygame.time.delay(2000)
             Sounds.play_winning()
-            #return GameSummaryScreen(self.click_count, self.time)
             return GameSummaryScreen(self.click_count)
 
         return super().show(game)

@@ -13,13 +13,13 @@ class NewGameMenuScreen(MenuScreen):
 
     def __init__(self):
         board_3x3 = Button("3 x 3")
-        board_3x3.set_click(lambda: GameScreen())
+        board_3x3.set_click(lambda: GameScreen('Boards/boards_3x3.txt'))
 
         board_4x4 = Button("4 x 4")
-        board_4x4.set_click(lambda: GameScreen())
+        board_4x4.set_click(lambda: GameScreen('Boards/boards_4x4.txt'))
 
         board_5x5 = Button("5 x 5")
-        board_5x5.set_click(lambda: GameScreen())
+        board_5x5.set_click(lambda: GameScreen('Boards/boards_5x5.txt'))
 
         back_button = Button(Localization.get_text('back'))
         back_button.set_click(lambda: MainMenuScreen())
