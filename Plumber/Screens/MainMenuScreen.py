@@ -1,7 +1,6 @@
 import pygame
 
 from Screens.MenuScreen import MenuScreen
-from Screens.GameScreen import GameScreen
 from Screens.ScoresScreen import ScoresScreen
 from UIItems.Button import Button
 
@@ -29,4 +28,5 @@ class MainMenuScreen(MenuScreen):
         super().__init__(buttons, "Plumber", 110)
 
 from Screens.NewGameMenuScreen import NewGameMenuScreen
+from Screens.GameScreen import GameScreen
 # it is here because modules import each other

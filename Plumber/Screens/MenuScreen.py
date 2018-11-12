@@ -17,7 +17,7 @@ class MenuScreen(Screen, metaclass = ABCMeta):
 
 
     def show(self, game):
-        self.title.write(game.window)
+        self.title.write(game.window, y = game.window.get_height() / 2 - 3 * self.title.size)
 
         i = 0
         

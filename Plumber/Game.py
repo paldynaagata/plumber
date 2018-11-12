@@ -28,7 +28,7 @@ class Game:
         run = True
 
         while run:
-            pygame.time.delay(100)
+            pygame.time.delay(50)
             self.window.fill((84, 71, 53))
             pygame.font.init()
     

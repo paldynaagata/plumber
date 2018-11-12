@@ -2,7 +2,7 @@ import pygame
 
 class CenteredText(object):
     """
-    Class representing centered text
+    Class representing text centered horizontal
     """
 
     def __init__(self, text_, size_, color_):
@@ -21,11 +21,18 @@ class CenteredText(object):
         return self.text_surface.get_height()
 
 
-    def _get_text_location(self, window):
-        x = (window.get_width() - self.get_width()) / 2
-        y = window.get_height()/2 - 2*self.get_height()
-        return (x, y)
+    def _get_text_location(self, rect):
+        x = rect.left + (rect.width - self.get_width()) / 2
+        y = rect.top + (rect.height - self.get_height()) / 2
+        return x, y
 
 
-    def write(self, window):
-        window.blit(self.text_surface, self._get_text_location(window))
+    def write(self, window, rect = None, y = None):
+        if rect is None:
+            rect = window.get_rect()
+
+        x, centred_y = self._get_text_location(rect)
+        if y is None:
+            y = centred_y
+
+        window.blit(self.text_surface, (x, y))

@@ -16,6 +16,7 @@ class GameScreen(Screen):
         self.success = False
         self.board = None
         self.scale = 100
+        self.click_count = 0
 
         x = 3
         y = 3
@@ -35,28 +36,51 @@ class GameScreen(Screen):
             pipe.image = pygame.transform.scale(pipe.image, (self.scale, self.scale))
 
 
+    def _get_frame_rectangle(self, board_x, board_y):
+        thickness = 10
+        left = board_x - thickness
+        top = board_y - thickness
+        width = self.board.x * self.scale + 2 * thickness
+        height = self.board.y * self.scale + 2 * thickness
+        return left, top, width, height
+
+
     def show(self, game):
+        board_x = (game.window.get_width() - self.scale * self.board.x) // 2
+        board_y = (game.window.get_height() - self.scale * self.board.y) // 2
+        
         for event in game.events:
             if event.type == pygame.MOUSEBUTTONUP:
+                #if self.success:
+                #    #return GameSummaryScreen(self.click_count, self.time)
+                #    return GameSummaryScreen()
+                #else:
                 if game.left_mouse_button_clicked or game.right_mouse_button_clicked:
                     clockwise = game.left_mouse_button_clicked
+                    self.click_count += 1
 
                     mouse_x, mouse_y = pygame.mouse.get_pos()
-                    pipe_x = mouse_x // self.scale
-                    pipe_y = mouse_y // self.scale
+                    pipe_x = (mouse_x - board_x) // self.scale 
+                    pipe_y = (mouse_y - board_y) // self.scale
 
                     if pipe_x in range(self.board.x) and pipe_y in range(self.board.y):
                         self.board.table[pipe_x][pipe_y].rotate(clockwise)
                         self.success = self.board.exists_connection_between_start_and_end_pipes()
 
-        pygame.draw.rect(game.window, (0, 0, 0), (0, 0, self.board.x * self.scale, self.board.y * self.scale))
+        pygame.draw.rect(game.window, (51, 26, 0), self._get_frame_rectangle(board_x, board_y))
+        pygame.draw.rect(game.window, (0, 0, 0), (board_x, board_y, self.board.x * self.scale, self.board.y * self.scale))
 
         for pipe in self.pipes:
-            game.window.blit(pipe.image, (self.scale * pipe.x, self.scale * pipe.y))
+            game.window.blit(pipe.image, (board_x + self.scale * pipe.x, board_y + self.scale * pipe.y))
 
         if self.success:
-            myfont = pygame.font.SysFont('Comic Sans MS', 30)
-            textsurface = myfont.render('Brawo!', False, (255, 255, 255))
-            game.window.blit(textsurface, (game.window.get_width() / 2, game.window.get_height() / 2))
+            #myfont = pygame.font.SysFont('Comic Sans MS', 30)
+            #textsurface = myfont.render('Brawo!', False, (255, 255, 255))
+            #game.window.blit(textsurface, (game.window.get_width() / 2, game.window.get_height() / 2))
+            #pygame.time.delay(2000)
+            #return GameSummaryScreen(self.click_count, self.time)
+            return GameSummaryScreen(self.click_count)
 
         return super().show(game)
+
+from Screens.GameSumaryScreen import GameSummaryScreen
