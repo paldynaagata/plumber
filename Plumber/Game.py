@@ -2,6 +2,7 @@ import os
 import pygame
 import platform
 import ctypes
+import Settings
 
 from Screens.MainMenuScreen import MainMenuScreen
 from Screens.Screen import Screen
@@ -14,21 +15,24 @@ class Game:
     def __init__(self):
         pygame.init()
         if platform.system() == 'Windows':
-            user32.SetProcessDPIAware()
             user32 = ctypes.windll.user32
-            [width, height] = [user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)]
+            user32.SetProcessDPIAware()
+            width = user32.GetSystemMetrics(0)
+            height = user32.GetSystemMetrics(1)
         else:
             display_info = pygame.display.Info()
             width = display_info.current_w
             height = display_info.current_h
-        #os.environ['SDL_VIDEO_WINDOW_POS'] = "200,100"
+
+        Settings.set_scale_factor(height / 1000)
+        os.environ['SDL_VIDEO_WINDOW_POS'] = "0,50"
         self.events = None
         self.left_mouse_button_clicked = False
         self.right_mouse_button_clicked = False
         self.current_screen = MainMenuScreen()
-        #self.window = pygame.display.set_mode((800, 800))
-        self.window = pygame.display.set_mode((width, height))
+        self.window = pygame.display.set_mode((width, height - 50))#, pygame.FULLSCREEN)
         pygame.display.set_caption("Plumber")
+
 
     def set_mouse_clicked_buttons(self):
         m1, m2, m3 = pygame.mouse.get_pressed()

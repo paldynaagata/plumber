@@ -14,17 +14,17 @@ class SettingsScreen(MenuScreen):
 
     def __init__(self):
         language_button = Button(f"{Localization.get_text('language')}: {Settings.get_language()}")
-        language_button.set_click(lambda: (Settings.set_to_next_language(), SettingsScreen())[1])
+        language_button.click_method = lambda: (Settings.set_to_next_language(), SettingsScreen())[1]
 
         sounds_button = Button(f"{Localization.get_text('sounds')}: {Localization.get_text(Settings.get_sound_enable())}")
-        sounds_button.set_click(lambda: (Settings.toggle_sound_enable(), SettingsScreen())[1])
+        sounds_button.click_method = lambda: (Settings.toggle_sound_enable(), SettingsScreen())[1]
 
         back_button = Button(Localization.get_text('back'))
-        back_button.set_click(lambda: MainMenuScreen())
+        back_button.click_method = lambda: MainMenuScreen()
 
         buttons = (language_button, sounds_button, back_button)
 
-        super().__init__(buttons, Localization.get_text('settings'), 60)
+        super().__init__(buttons, Localization.get_text('settings'))
     
 
     def show(self, game):

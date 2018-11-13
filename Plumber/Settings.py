@@ -1,3 +1,5 @@
+import Localization
+
 from Singleton import Singleton
 
 class __Settings(metaclass = Singleton):
@@ -6,10 +8,11 @@ class __Settings(metaclass = Singleton):
     """
 
     def __init__(self):
-        self._languages = ('EN', 'PL')
+        self._languages = Localization.get_available_languages()
 
         self.language = self._languages[0]
         self.sound_enable = True
+        self.scale_factor = 1
 
 
     def _get_next_value(self, collection, value):
@@ -46,3 +49,11 @@ def get_language():
 
 def get_sound_enable():
     return instance.sound_enable
+
+
+def set_scale_factor(factor):
+    instance.scale_factor = factor
+
+
+def get_scale_factor():
+    return instance.scale_factor
