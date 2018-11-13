@@ -14,7 +14,7 @@ class Game:
         self.left_mouse_button_clicked = False
         self.right_mouse_button_clicked = False
         self.current_screen = MainMenuScreen()
-        self.window = pygame.display.set_mode((800, 800))
+        self.window = pygame.display.set_mode((900, 900))
         pygame.display.set_caption("Plumber")
 
 

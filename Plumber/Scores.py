@@ -48,3 +48,8 @@ class Scores:
 
     def _get_file_path(self):
         return Path(f"Scores/{self.board_name}")
+
+
+    def clear_scores(self):
+        path = self._get_file_path()
+        path.write_text("", encoding = Constants.encoding)

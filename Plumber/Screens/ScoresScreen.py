@@ -14,11 +14,11 @@ class ScoresScreen(MenuScreen):
 
     def __init__(self, board_name):
         self.board_name = board_name
-        #scores_3x3 = Scores('3x3')
-        #self.scores_3x3 = scores_3x3._get_scores_for_board()
+        scores = Scores(board_name)
+        self.scores = scores._get_scores_for_board()
 
         clear_scores_button = Button(Localization.get_text('clear_scores'))
-        #clear_scores_button.set_click(lambda: MainMenuScreen())
+        clear_scores_button.set_click(lambda: (scores.clear_scores(), ScoresScreen(self.board_name))[1])
 
         back_button = Button(Localization.get_text('back'))
         back_button.set_click(lambda: GameTypePickerScreen('best_scores', lambda x: ScoresScreen(x)))
@@ -29,6 +29,11 @@ class ScoresScreen(MenuScreen):
 
 
     def show(self, game):
+        i = -2.5
+        for score in self.scores:
+            text = CenteredText(str.format("{0:<20}                 {1:>10}", score[0], score[1]), 20, (0, 0, 0))
+            text.write(game.window, y = game.window.get_height() / 3 + i * text.size)
+            i += 2
 
         return super().show(game)
 

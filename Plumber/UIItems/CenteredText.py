@@ -32,8 +32,8 @@ class CenteredText(object):
         if rect is None:
             rect = window.get_rect()
 
-        x, centred_y = self._get_text_location(rect)
+        x, centered_y = self._get_text_location(rect)
         if y is None:
-            y = centred_y
+            y = centered_y
 
         window.blit(self.text_surface, (x, y))
