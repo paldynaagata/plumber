@@ -10,13 +10,17 @@ class Game:
     """
 
     def __init__(self):
-        os.environ['SDL_VIDEO_WINDOW_POS'] = "200,100"
         pygame.init()
+        display_info = pygame.display.Info()
+        width = display_info.current_w
+        height = display_info.current_h
+        os.environ['SDL_VIDEO_WINDOW_POS'] = "200,100"
         self.events = None
         self.left_mouse_button_clicked = False
         self.right_mouse_button_clicked = False
         self.current_screen = MainMenuScreen()
-        self.window = pygame.display.set_mode((900, 900))
+        #self.window = pygame.display.set_mode((800, 800))
+        self.window = pygame.display.set_mode((width, height))
         pygame.display.set_caption("Plumber")
 
 
