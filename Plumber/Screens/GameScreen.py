@@ -39,6 +39,9 @@ class GameScreen(Screen):
 
 
     def show(self, game):
+        if self.success:
+            return GameSummaryScreen(self.click_count, self.size)
+
         board_x = (game.window.get_width() - self.scale * self.board.x) // 2
         board_y = (game.window.get_height() - self.scale * self.board.y) // 2
         
@@ -65,9 +68,8 @@ class GameScreen(Screen):
 
         if self.success:
             Sounds.play_winning()
-            return GameSummaryScreen(self.click_count, self.size)
 
         return super().show(game)
 
 
-from Screens.GameSumaryScreen import GameSummaryScreen
+from Screens.GameSummaryScreen import GameSummaryScreen

@@ -1,3 +1,4 @@
+import os
 import pygame
 
 from Screens.MainMenuScreen import MainMenuScreen
@@ -9,6 +10,7 @@ class Game:
     """
 
     def __init__(self):
+        os.environ['SDL_VIDEO_WINDOW_POS'] = "200,100"
         pygame.init()
         self.events = None
         self.left_mouse_button_clicked = False

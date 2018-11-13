@@ -1,5 +1,6 @@
 import pygame
 import Localization
+import Constants
 
 from Scores import Scores
 from Screens.MenuScreen import MenuScreen
@@ -30,9 +31,14 @@ class ScoresScreen(MenuScreen):
 
     def show(self, game):
         i = -2.5
-        for score in self.scores:
-            text = CenteredText(str.format("{0:<20}                 {1:>10}", score[0], score[1]), 20, (0, 0, 0))
-            text.write(game.window, y = game.window.get_height() / 3 + i * text.size)
+        for no, score in enumerate(self.scores):
+            myfont = pygame.font.SysFont(Constants.font, 20)
+            text_surface1 = myfont.render(f"{no + 1}. {score[0]}", False, (0, 0, 0))
+            text_surface2 = myfont.render(f"{score[1]:>4}", False, (0, 0, 0))
+            x = game.window.get_width() / 2 - 200
+            y = game.window.get_height() / 3 + i * 20
+            game.window.blit(text_surface1, (x, y))
+            game.window.blit(text_surface2, (x + 350, y))
             i += 2
 
         return super().show(game)
