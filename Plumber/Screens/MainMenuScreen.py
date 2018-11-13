@@ -12,16 +12,16 @@ class MainMenuScreen(MenuScreen):
 
     def __init__(self):
         new_game_button = Button(Localization.get_text('new_game'))
-        new_game_button.set_click(lambda: GameTypePickerScreen('choose_size', lambda x: GameScreen(x)))
+        new_game_button.click_method = lambda: GameTypePickerScreen('choose_size', lambda x: GameScreen(x))
 
         scores_button = Button(Localization.get_text('best_scores'))
-        scores_button.set_click(lambda: GameTypePickerScreen('best_scores', lambda x: ScoresScreen(x)))
+        scores_button.click_method = lambda: GameTypePickerScreen('best_scores', lambda x: ScoresScreen(x))
 
         settings_button = Button(Localization.get_text('settings'))
-        settings_button.set_click(lambda: SettingsScreen())
+        settings_button.click_method = lambda: SettingsScreen()
 
         exit_button = Button(Localization.get_text('exit'))
-        exit_button.set_click(lambda: None)
+        exit_button.click_method = lambda: None
 
         buttons = (new_game_button, scores_button, settings_button, exit_button)
 

@@ -1,5 +1,6 @@
 import pygame
 import Sounds
+import Settings
 
 from pygame import Rect
 from UIItems.CenteredText import CenteredText
@@ -11,14 +12,15 @@ class Button:
 
     def __init__(self, text):
         self.text = None
-        self.size = (170, 50)
         self.click_method = None
         self.rect = None
+        self._scale_factor = Settings.get_scale_factor()
+        self.size = (int(170 * self._scale_factor), int(50 * self._scale_factor))
         self.set_text(text)
 
 
     def set_text(self, text):
-        self.text = CenteredText(text, 20, (0, 0, 0))
+        self.text = CenteredText(text, 20 * self._scale_factor, (0, 0, 0))
 
 
     def set_click(self, method):

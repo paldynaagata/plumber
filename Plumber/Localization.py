@@ -18,6 +18,10 @@ class __Localization(metaclass = Singleton):
         return self._dictionaries[Settings.get_language()][f"{key}"]
 
 
+    def get_available_languages(self):
+        return list(self._dictionaries.keys())
+
+
     def _load_localization(self):
         with open('localization.csv', mode = 'r', encoding = Constants.encoding) as file:
             reader = csv.DictReader(file)
@@ -33,3 +37,7 @@ instance = __Localization()
 
 def get_text(key):
     return instance.get_text(key)
+
+
+def get_available_languages():
+    return instance.get_available_languages()

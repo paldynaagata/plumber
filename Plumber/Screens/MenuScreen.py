@@ -1,4 +1,5 @@
 import pygame
+import Settings
 
 from abc import ABCMeta, abstractmethod
 from Screens.Screen import Screen
@@ -10,7 +11,8 @@ class MenuScreen(Screen, metaclass = ABCMeta):
     """
 
     @abstractmethod
-    def __init__(self, buttons, header, header_size):
+    def __init__(self, buttons, header, header_size = 60):
+        header_size = int(header_size * Settings.get_scale_factor())
         self.title = CenteredText(header, header_size, (255, 153, 153))
         self.button_color = (255, 255, 102)
         self.buttons = buttons

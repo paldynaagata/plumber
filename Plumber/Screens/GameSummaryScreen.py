@@ -1,5 +1,6 @@
 import pygame
 import Localization
+import Settings
 
 from pygame import Rect
 from Scores import Scores
@@ -19,16 +20,17 @@ class GameSummaryScreen(MenuScreen):
         self.board_size = board_size
         self.user_name = ""
         self.board_name = f"{self.board_size}x{self.board_size}"
+        self._scale_factor = Settings.get_scale_factor()
 
         self.scores = Scores(self.board_name)
         self.show_input = self.scores.is_score_rated(self.click_count)
 
         menu_button = Button(Localization.get_text('menu'))
-        menu_button.set_click(lambda: MainMenuScreen())
+        menu_button.click_method = lambda: MainMenuScreen()
 
         buttons = [menu_button]
 
-        super().__init__(buttons, Localization.get_text('congratulations'), 60)
+        super().__init__(buttons, Localization.get_text('congratulations'))
 
 
     def show(self, game):
@@ -37,15 +39,16 @@ class GameSummaryScreen(MenuScreen):
         text.write(game.window, y = game.window.get_height() / 2 - 4 * text.size)
 
         if self.show_input:
-            text = CenteredText(Localization.get_text('enter_name'), 20, (0, 0, 0))
+            text = CenteredText(Localization.get_text('enter_name'), 20 * self._scale_factor, (0, 0, 0))
             text.write(game.window, y = game.window.get_height() / 2 - 2 * text.size)
 
-            rect_width = 300
-            rect_height = 50
-            rect = Rect(((game.window.get_width() - rect_width) / 2, (game.window.get_height() + 1.5 * rect_height) / 2), (rect_width, rect_height))
+            rect_width = int(300 * self._scale_factor)
+            rect_height = int(50 * self._scale_factor)
+            rect_location = ((game.window.get_width() - rect_width) / 2, (game.window.get_height() + 1.5 * rect_height) / 2)
+            rect = Rect(rect_location, (rect_width, rect_height))
             pygame.draw.rect(game.window, (255, 255, 255), rect)
 
-            user_name_text = CenteredText(self.user_name, 20, (0, 0, 0))
+            user_name_text = CenteredText(self.user_name, 20 * self._scale_factor, (0, 0, 0))
             user_name_text.write(game.window, rect)
 
             for event in game.events:

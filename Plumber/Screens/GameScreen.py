@@ -1,6 +1,7 @@
 import pygame
 import math
 import Sounds
+import Settings
 
 from Board import Board
 from Screens.Screen import Screen
@@ -16,7 +17,8 @@ class GameScreen(Screen):
         self.pipes = list()
         self.success = False
         self.board = None
-        self.scale = 100
+        self._scale_factor = Settings.get_scale_factor()
+        self.scale = int(100 * self._scale_factor)
         self.click_count = 0
         pipes_file_path = f"Boards/{board_name}.txt"
         
