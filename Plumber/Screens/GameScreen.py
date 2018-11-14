@@ -2,15 +2,17 @@ import pygame
 import math
 import Sounds
 import Settings
+import Localization
 
 from Board import Board
-from Screens.Screen import Screen
+from Screens.MenuScreen import MenuScreen
 from PipesImporter import PipesImporter
+from UIItems.Button import Button
 
-class GameScreen(Screen):
+class GameScreen(MenuScreen):
     """
     Class representing game screen,
-    inherited class Screen
+    inherited class MenuScreen
     """
 
     def __init__(self, board_name):
@@ -29,6 +31,11 @@ class GameScreen(Screen):
 
         for pipe in self.pipes:
             pipe.image = pygame.transform.scale(pipe.image, (self.scale, self.scale))
+
+        back_button = Button(Localization.get_text('back'))
+        back_button.click_method = lambda: GameTypePickerScreen('choose_size', lambda x: GameScreen(x))
+        buttons = [back_button]
+        super().__init__(buttons, None)
 
 
     def _get_frame_rectangle(self, board_x, board_y):
@@ -75,3 +82,5 @@ class GameScreen(Screen):
 
 
 from Screens.GameSummaryScreen import GameSummaryScreen
+from Screens.GameTypePickerScreen import GameTypePickerScreen
+# it is here because modules import each other

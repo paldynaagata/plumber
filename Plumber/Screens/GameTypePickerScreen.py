@@ -2,7 +2,6 @@ import pygame
 import Localization
 
 from Screens.MenuScreen import MenuScreen
-from Screens.GameScreen import GameScreen
 from UIItems.Button import Button
 
 class GameTypePickerScreen(MenuScreen):
@@ -30,4 +29,5 @@ class GameTypePickerScreen(MenuScreen):
 
 
 from Screens.MainMenuScreen import MainMenuScreen
+from Screens.GameScreen import GameScreen
 # it is here because modules import each other

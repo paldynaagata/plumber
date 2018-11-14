@@ -9,7 +9,6 @@ class __Settings(metaclass = Singleton):
 
     def __init__(self):
         self._languages = Localization.get_available_languages()
-
         self.language = self._languages[0]
         self.sound_enable = True
         self.scale_factor = 1
