@@ -25,9 +25,14 @@ class Scores:
             self._scores.append((user, score))
             self._scores.sort(key = lambda x: x[1])
             self._scores = self._scores[:10]
+
             path = self._get_file_path()
-            if not path.exists():
-                path.touch()
+            directory = Path("Scores")
+            if not Path.exists(directory):
+                Path(directory).mkdir(parents = True, exist_ok = True) 
+                if not path.exists():
+                    path.touch()
+
             text = '\n'.join(','.join(map(str, t)) for t in self._scores)
             path.write_text(text, encoding = Constants.encoding)
 

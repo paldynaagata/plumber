@@ -10,8 +10,8 @@ class CenteredText(object):
         self.text = text_
         self.size = int(size_)
         self.color = color_
-        myfont = pygame.font.SysFont(Constants.font, self.size)
-        self.text_surface = myfont.render(self.text, False, self.color)
+        self.myfont = pygame.font.SysFont(Constants.font, self.size)
+        self.text_surface = self.myfont.render(self.text, False, self.color)
 
 
     def get_width(self):
@@ -20,6 +20,11 @@ class CenteredText(object):
 
     def get_height(self):
         return self.text_surface.get_height()
+
+
+    def set_text(self, text):
+        self.text = text
+        self.text_surface = self.myfont.render(self.text, False, self.color)
 
 
     def _get_text_location(self, rect):
