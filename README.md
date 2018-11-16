@@ -40,6 +40,22 @@ Po uruchomieniu gry widzimy ekran startowy z czterema przyciskami do wyboru.
 ## Jak grać
 Gra polega na odpowiednim ułożeniu rur tak, aby połączyć początkową rurę (rura w lewym górnym rogu) z końcową (rura w prawym dolnym rogu). Nie ma konieczności użycia wszystkich rur. Kliknięcie lewym przyciskiem myszy obraca rurę o 90 stopni zgodnie z ruchem wskazówek zegara, natomiast kliknięcie prawym przyciskiem myszy obraca rurę o 90 stopni przeciwnie do ruchu wskazówek zegara. Liczba zdobytych punktów to liczba kliknięć, zatem najlepszy wynik to ten z najmniejszą liczbą kliknięć.
 
+## Wykorzystane źródła
+Obrazki rur zostały pobrane z OpenClipart, zostały one udostępnione na licencji CC0-1.0:
+
+* https://openclipart.org/detail/278957/steel-pipe
+
+* https://openclipart.org/detail/278956/steel-pipe
+
+Dźwięki natomiast zostały pobrane z OpenGameArt, zostały one udostępnione na licencjach CC-BY-SA 3.0, GPL 3.0, GPL 2.0:
+
+* https://opengameart.org/content/interface-sounds-starter-pack
+
+* https://opengameart.org/content/oldschool-win-and-die-jump-and-run-sounds
+
+## Licencja
+Ten projekt jest udostępniony na zasadzie licencji MIT - patrz plik [LICENSE](LICENSE).
+
 
 
 # Plumber (English)
@@ -83,3 +99,19 @@ After running the game we can see main menu screen with four buttons.
 
 ## How to play
 In this game you have to apropriately lay pipes to get through the start (pipe in left top conrner) and end (pipe in right bottom conrner) pipes. It isn't necessary to use all pipes. Clicking left mouse button rotates pipe 90 degree clockwise, whereas clicking right mouse button roratates pipe 90 degree counterclockwise. Score is the number of clicks, so the best score is that with the least number of clicks.
+
+## Used sources
+Images of pipes were downloaded from OpenClipart, they are licensed under CC0-1.0 License:
+
+* https://openclipart.org/detail/278957/steel-pipe
+
+* https://openclipart.org/detail/278956/steel-pipe
+
+Sounds were downloaded from OpenGameArt, they are licensed under CC-BY-SA 3.0, GPL 3.0, GPL 2.0 Licenses:
+
+* https://opengameart.org/content/interface-sounds-starter-pack
+
+* https://opengameart.org/content/oldschool-win-and-die-jump-and-run-sounds
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
