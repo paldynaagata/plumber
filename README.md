@@ -81,5 +81,5 @@ After running the game we can see main menu screen with four buttons.
 
 4. **Exit**: quit the game.
 
-## Jak grać
+## How to play
 In this game you have to apropriately lay pipes to get through the start (pipe in left top conrner) and end (pipe in right bottom conrner) pipes. It isn't necessary to use all pipes. Clicking left mouse button rotates pipe 90 degree clockwise, whereas clicking right mouse button roratates pipe 90 degree counterclockwise. Score is the number of clicks, so the best score is that with the least number of clicks.
