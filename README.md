@@ -26,9 +26,23 @@ Grę można pobrać na dwa sposoby, bezpośrednio z githuba oraz za pomocą term
 ### Jak uruchomić grę
 W terminalu za pośrednictwem pythona uruchomić plik **Plumber.py**, np.: **python Plumber.py** lub **/opt/anaconda/bin/python Plumber.py**.
 
+## Jak zacząć
+Po uruchomieniu gry widzimy ekran startowy z czterema przyciskami do wyboru.
+
+1. **New game**: wybieramy wymiar planszy na jakiej chcemy zagrać.
+
+2. **Scores**: po wybraniu wymiaru planszy widzimy listę dziesięciu najlepszych wyników. Wyniki można wyczyścić klikając przycisk **Clear scores**.
+
+3. **Settings**: tutaj można zmieniać język PL/EN, jak również wyłączać/włączać dźwięki. Domyślne ustawienia to język angielski i włączone dźwięki.
+
+4. **Exit**: wychodzimy z gry.
+
+## Jak grać
+Gra polega na odpowiednim ułożeniu rur tak, aby połączyć początkową rurę (rura w lewym górnym rogu) z końcową (rura w prawym dolnym rogu). Nie ma konieczności użycia wszystkich rur. Kliknięcie lewym przyciskiem myszy obraca rurę o 90 stopni zgodnie z ruchem wskazówek zegara, natomiast kliknięcie prawym przyciskiem myszy obraca rurę o 90 stopni przeciwnie do ruchu wskazówek zegara. Liczba zdobytych punktów to liczba kliknięć, zatem najlepszy wynik to ten z najmniejszą liczbą kliknięć.
 
 
-# Plumber
+
+# Plumber (English)
 Plumber it's a game in which you have to apropriately lay pipes to get through the start and end pipes.
 
 ## Getting started.
@@ -55,3 +69,17 @@ There are two ways to download the game, directly from github and by terminal.
 
 ### How to run the game
 In terminal by python run file **Plumber.py**, e.g.: **python Plumber.py** or **/opt/anaconda/bin/python Plumber.py**.
+
+## Let's start
+After running the game we can see main menu screen with four buttons.
+
+1. **New game**: here we can choose size of the board on which we want to play.
+
+2. **Scores**: after choosing size of the board we can see list of ten best scores. It's possible to clear the scores by clicking **Clear scores** button.
+
+3. **Settings**: here we can change language PL/EN, and also turn off/turn on sounds. Default settings are English and sound on.
+
+4. **Exit**: quit the game.
+
+## Jak grać
+In this game you have to apropriately lay pipes to get through the start (pipe in left top conrner) and end (pipe in right bottom conrner) pipes. It isn't necessary to use all pipes. Clicking left mouse button rotates pipe 90 degree clockwise, whereas clicking right mouse button roratates pipe 90 degree counterclockwise. Score is the number of clicks, so the best score is that with the least number of clicks.
