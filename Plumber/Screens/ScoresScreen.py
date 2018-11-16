@@ -38,7 +38,7 @@ class ScoresScreen(MenuScreen):
         i = -2.5
         x = game.window.get_width() / 2 - self._user_name_x_shift
         for no, score in enumerate(self.scores):
-            myfont = pygame.font.SysFont(Constants.font, self._font_size)
+            myfont = pygame.font.Font(Constants.font_path, self._font_size)
             text_surface1 = myfont.render(f"{no + 1}. {score[0]}", False, (0, 0, 0))
             text_surface2 = myfont.render(f"{score[1]:>4}", False, (0, 0, 0))
             y = game.window.get_height() / 3 + int(i * 20 * self._scale_factor)
