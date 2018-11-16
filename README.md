@@ -38,7 +38,7 @@ Po uruchomieniu gry widzimy ekran startowy z czterema przyciskami do wyboru.
 4. **Exit**: wychodzimy z gry.
 
 ## Jak grać
-Gra polega na odpowiednim ułożeniu rur tak, aby połączyć początkową rurę (rura w lewym górnym rogu) z końcową (rura w prawym dolnym rogu). Nie ma konieczności użycia wszystkich rur. Kliknięcie lewym przyciskiem myszy obraca rurę o 90 stopni zgodnie z ruchem wskazówek zegara, natomiast kliknięcie prawym przyciskiem myszy obraca rurę o 90 stopni przeciwnie do ruchu wskazówek zegara. Liczba zdobytych punktów to liczba kliknięć, zatem najlepszy wynik to ten z najmniejszą liczbą kliknięć.
+Gra polega na odpowiednim ułożeniu rur tak, aby połączyć początkową rurę (rura w lewym górnym rogu) z końcową (rura w prawym dolnym rogu). Zarówno rura początkowa, jak i końcowa, nie obracają się. Nie ma konieczności użycia wszystkich rur. Kliknięcie lewym przyciskiem myszy obraca rurę o 90 stopni zgodnie z ruchem wskazówek zegara, natomiast kliknięcie prawym przyciskiem myszy obraca rurę o 90 stopni przeciwnie do ruchu wskazówek zegara. Liczba zdobytych punktów to liczba kliknięć, zatem najlepszy wynik to ten z najmniejszą liczbą kliknięć.
 
 ## Wykorzystane źródła
 Obrazki rur zostały pobrane z OpenClipart, są udostępnione na licencji CC0-1.0:
@@ -98,7 +98,7 @@ After running the game we can see main menu screen with four buttons.
 4. **Exit**: quit the game.
 
 ## How to play
-In this game you have to apropriately lay pipes to get through the start (pipe in left top conrner) and end (pipe in right bottom conrner) pipes. It isn't necessary to use all pipes. Clicking left mouse button rotates pipe 90 degree clockwise, whereas clicking right mouse button roratates pipe 90 degree counterclockwise. Score is the number of clicks, so the best score is that with the least number of clicks.
+In this game you have to apropriately lay pipes to get through the start (pipe in left top conrner) and end (pipe in right bottom conrner) pipes. Start and end pipes don't rotate. It isn't necessary to use all pipes. Clicking left mouse button rotates pipe 90 degree clockwise, whereas clicking right mouse button roratates pipe 90 degree counterclockwise. Score is the number of clicks, so the best score is that with the least number of clicks.
 
 ## Used sources
 Images of pipes were downloaded from OpenClipart, they are licensed under CC0-1.0 License:
