@@ -10,7 +10,7 @@ class CenteredText(object):
         self.text = text_
         self.size = int(size_)
         self.color = color_
-        self.myfont = pygame.font.SysFont(Constants.font, self.size)
+        self.myfont = pygame.font.Font(Constants.font_path, self.size)
         self.text_surface = self.myfont.render(self.text, False, self.color)
 
 
